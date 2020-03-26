@@ -4,7 +4,7 @@ namespace Jascha030\WPOL\Service\Locator;
 
 use Exception;
 
-class ServiceInstanceLocator extends Locator
+class ServiceLocator extends Locator
 {
     private $services = [];
 

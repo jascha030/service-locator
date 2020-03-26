@@ -4,55 +4,58 @@ namespace Jascha030\WPOL\Service\Locator;
 
 use Exception;
 
-class StaticLocator
+/**
+ * Class StaticServiceLocator
+ *
+ * @package Jascha030\WPOL\Service\Locator
+ */
+class StaticServiceLocator extends Locator
 {
-    private static $instance;
-
     private static $services = [];
 
-    public function __construct()
-    {
-        foreach ($this::$services as $service) {
-            if (class_exists($service)) {
-                $this[$service] = function () use ($service) {
-                    static $_service;
-
-                    if (null !== $_service) {
-                        return $_service;
-                    }
-
-                    $_service = (is_string($service)) ? new $service() : $service;
-
-                    return $_service;
-                };
-            }
-        }
-    }
-
-    public static function get_instance()
-    {
-        if (null === self::$instance) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
+    /**
+     * @param $key
+     *
+     * @return mixed
+     * @throws Exception
+     */
     public static function get($key)
     {
+        /** @var StaticServiceLocator $class */
         $class = get_called_class();
 
         if ($class::has($key)) {
             throw new Exception("Service does not exist or is not loaded in plugin");
         }
 
-        return call_user_func($class::services[$key]);
+        return call_user_func(self::$services[$key]);
     }
 
-    public static function has($key)
+    /**
+     * @param $key
+     *
+     * @return bool
+     */
+    public static function has($key): bool
     {
         $class = get_called_class();
 
-        return (array_key_exists($key, $class::$services));
+        return (array_key_exists($key, self::$services));
+    }
+
+    /**
+     * @return array
+     */
+    protected function getServices(): array
+    {
+        return $this::$services;
+    }
+
+    /**
+     * @param array $services
+     */
+    protected function setServices(array $services)
+    {
+        $this::$services = $services;
     }
 }
