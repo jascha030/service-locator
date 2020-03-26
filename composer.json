@@ -1,0 +1,19 @@
+{
+  "name": "jascha030/wpol-services",
+  "description": "Service locators for WP OOP Plugin development",
+  "version": "0.0.1",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jascha van Aalst",
+      "email": "contact@jaschavanaalst.nl",
+      "homepage": "https://github.com/jascha030",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Jascha030\\WPOL\\Service\\": "src/"
+    }
+  }
+}
