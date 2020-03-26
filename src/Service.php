@@ -1,11 +1,11 @@
 <?php
 
-namespace Jascha030\WPOL\Service;
+namespace Jascha030\Service;
 
 /**
  * Interface Service
  *
- * @package Jascha030\WPOL\Service
+ * @package Jascha030\Service
  */
 interface Service
 {
@@ -16,5 +16,5 @@ interface Service
      */
     public function __construct();
 
-    public function getName();
+    public function getName(): string;
 }

@@ -1,9 +1,14 @@
 <?php
 
-namespace Jascha030\WPOL\Service\Locator;
+namespace Jascha030\Service\Locator;
 
-use Jascha030\WPOL\Service\Service;
+use Jascha030\Service\Service;
 
+/**
+ * Class Locator
+ *
+ * @package Jascha030\Service\Locator
+ */
 abstract class Locator
 {
     /**

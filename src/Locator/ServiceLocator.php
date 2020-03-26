@@ -1,14 +1,14 @@
 <?php
 
-namespace Jascha030\WPOL\Service\Locator;
+namespace Jascha030\Service\Locator;
 
 use Exception;
-use Jascha030\WPOL\Service\Exception\ServiceNotFoundException;
+use Jascha030\Service\Exception\ServiceNotFoundException;
 
 /**
  * Class ServiceLocator
  *
- * @package Jascha030\WPOL\Service\Locator
+ * @package Jascha030\Service\Locator
  */
 class ServiceLocator extends Locator
 {
