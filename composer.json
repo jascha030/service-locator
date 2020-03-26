@@ -1,5 +1,5 @@
 {
-  "name": "jascha030/wpol-services",
+  "name": "jascha030/service-locator",
   "description": "Service locators for WP OOP Plugin development",
   "version": "0.0.1",
   "license": "MIT",
@@ -13,7 +13,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Jascha030\\WPOL\\Service\\": "src/"
+      "Jascha030\\Service\\": "src/"
     }
   }
 }

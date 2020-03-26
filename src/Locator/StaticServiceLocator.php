@@ -1,14 +1,14 @@
 <?php
 
-namespace Jascha030\WPOL\Service\Locator;
+namespace Jascha030\Service\Locator;
 
 use Exception;
-use Jascha030\WPOL\Service\Exception\ServiceNotFoundException;
+use Jascha030\Service\Exception\ServiceNotFoundException;
 
 /**
  * Class StaticServiceLocator
  *
- * @package Jascha030\WPOL\Service\Locator
+ * @package Jascha030\Service\Locator
  */
 class StaticServiceLocator extends Locator
 {
@@ -22,10 +22,7 @@ class StaticServiceLocator extends Locator
      */
     public static function get($key)
     {
-        /** @var StaticServiceLocator $class */
-        $class = get_called_class();
-
-        if ($class::has($key)) {
+        if (self::has($key)) {
             throw new ServiceNotFoundException("Service does not exist or is not loaded in plugin");
         }
 
@@ -39,8 +36,6 @@ class StaticServiceLocator extends Locator
      */
     public static function has($key): bool
     {
-        $class = get_called_class();
-
         return (array_key_exists($key, self::$services));
     }
 
