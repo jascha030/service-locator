@@ -4,33 +4,9 @@ namespace Jascha030\WPOL\Service\Locator;
 
 use Exception;
 
-class ServiceLocator
+class ServiceInstanceLocator extends Locator
 {
     private $services = [];
-
-    /**
-     * ServiceContainer constructor.
-     *
-     * @param array $services
-     */
-    public function __construct($services = [])
-    {
-        foreach ($services as $service) {
-            if (class_exists($service)) {
-                $this[$service] = function () use ($service) {
-                    static $_service;
-
-                    if (null !== $_service) {
-                        return $_service;
-                    }
-
-                    $_service = (is_string($service)) ? new $service() : $service;
-
-                    return $_service;
-                };
-            }
-        }
-    }
 
     /**
      * @param $key
@@ -55,5 +31,21 @@ class ServiceLocator
     public function has($key)
     {
         return (array_key_exists($key, $this->services));
+    }
+
+    /**
+     * @return array
+     */
+    protected function getServices(): array
+    {
+        return $this->services;
+    }
+
+    /**
+     * @param array $services
+     */
+    protected function setServices(array $services)
+    {
+        $this->services = $services;
     }
 }
