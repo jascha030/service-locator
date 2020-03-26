@@ -3,7 +3,13 @@
 namespace Jascha030\WPOL\Service\Locator;
 
 use Exception;
+use Jascha030\WPOL\Service\Exception\ServiceNotFoundException;
 
+/**
+ * Class ServiceLocator
+ *
+ * @package Jascha030\WPOL\Service\Locator
+ */
 class ServiceLocator extends Locator
 {
     private $services = [];
@@ -17,7 +23,7 @@ class ServiceLocator extends Locator
     public function get($key)
     {
         if ($this->has($key)) {
-            throw new Exception("Service does not exist or is not loaded in plugin");
+            throw new ServiceNotFoundException("Service does not exist or is not loaded in plugin");
         }
 
         return call_user_func($this->services[$key]);

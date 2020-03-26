@@ -3,6 +3,7 @@
 namespace Jascha030\WPOL\Service\Locator;
 
 use Exception;
+use Jascha030\WPOL\Service\Exception\ServiceNotFoundException;
 
 /**
  * Class StaticServiceLocator
@@ -25,7 +26,7 @@ class StaticServiceLocator extends Locator
         $class = get_called_class();
 
         if ($class::has($key)) {
-            throw new Exception("Service does not exist or is not loaded in plugin");
+            throw new ServiceNotFoundException("Service does not exist or is not loaded in plugin");
         }
 
         return call_user_func(self::$services[$key]);
