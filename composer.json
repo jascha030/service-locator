@@ -1,7 +1,7 @@
 {
   "name": "jascha030/service-locator",
-  "description": "Service locators for WP OOP Plugin development",
-  "version": "0.0.1",
+  "description": "Simple service locator",
+  "version": "1.0.0",
   "license": "MIT",
   "authors": [
     {
